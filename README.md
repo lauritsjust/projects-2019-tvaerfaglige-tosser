@@ -10,3 +10,5 @@ A short description of the files and folders:
 * [/examproject](/examproject): Same structure as above.
 * [/modelproject](/modelproject): Same structure as above.
 * [.gitignore](/.gitignore): A textfile specifying files and folder that will not be uploaded to github, and will not be tracked by git.  
+
+VICTOR ER EN TOSSE
