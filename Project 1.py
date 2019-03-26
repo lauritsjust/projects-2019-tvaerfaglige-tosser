@@ -8,7 +8,7 @@ import time
 # SET ATTRIBUTES FOR DATA FETCH #
 apikey = "XU0S88ZM101LB0FQ" 
 outputsize = "compact" # Compact or full. Compact is 100 days, full is 20+ years.
-tickers = ["AAPL", "TSLA", "TEVA"] # MAX of five 
+tickers = ["AAPL", "TSLA", "TEVA"] # Maximum of five stocks per data fetch and only one data fetch per minute allowed
 
 # Empty Panda DataFrame to append individual stock data to 
 stocks_df = pd.DataFrame() 
