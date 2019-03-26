@@ -25,7 +25,11 @@ print("Mean close for all stocks is " + str(round(stocks_df.close.mean(),2)))
 print("\n-----------------------------------\n")
 print(stocks_df)
 #Vi laver nu en graf der viser udviklingen
-#fig = plt.figure(figsize=10,5)
-#ax = fig.add_subplot(1,1,1)
-#ax.set_title('ticker_name')
-#ax_right.plot(timestamp,close)
+fig = plt.figure(figsize=(10,5))
+ax = fig.add_subplot(1,1,1)
+ax.set_title('ticker_name')
+timestamp=stocks_df.loc[stocks_df['ticker'] =='AAPL', ['timestamp']]
+timestamp2=timestamp['timestamp']
+close=stocks_df.loc[stocks_df['ticker'] =='AAPL', ['close']]
+ax.plot(timestamp2,close)
+plt.show()
