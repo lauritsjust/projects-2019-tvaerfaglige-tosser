@@ -1,16 +1,19 @@
-# DOWNLOAD STOCK DATA LINK https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AAPL&outputsize=full&apikey=XU0S88ZM101LB0FQ&datatype=csv
-###----- TEST PYTHON -----###
-print("Så kører vi!") # Virker Python overhovedet?
-###----- START KODE -----###
+# EXAMPLE LINK: https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AAPL&outputsize=full&apikey=XU0S88ZM101LB0FQ&datatype=csv
+
+# Import neccesary modules and packages #
 import pandas as pd
+import matplotlib.pyplot as plt
+import time
 
-apikey = "XU0S88ZM101LB0FQ"
-outputsize = "compact" # Compact or full. Compact is 100 points, full is 20+ years.
+# SET ATTRIBUTES FOR DATA FETCH #
+apikey = "XU0S88ZM101LB0FQ" 
+outputsize = "compact" # Compact or full. Compact is 100 days, full is 20+ years.
+tickers = ["AAPL", "TSLA", "TEVA"] # Maximum of five stocks per data fetch and only one data fetch per minute allowed
 
-stocks_df = pd.DataFrame()
-tickers = ["AAPL", "TSLA", "TEVA"]
-print("\n-----------------------------------\n")
-print("Based on individual dataframes:")
+# Empty Panda DataFrame to append individual stock data to 
+stocks_df = pd.DataFrame() 
+
+# Loop through tickercodes and fetch data individually, then append to stocks_df
 for ticker in tickers:
     fetch_link = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + ticker + "&outputsize=" + outputsize + "&apikey=" + apikey + "&datatype=csv"
     df = pd.read_csv(fetch_link)
