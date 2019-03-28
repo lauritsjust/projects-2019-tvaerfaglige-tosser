@@ -22,15 +22,12 @@ for ticker in tickers:
     stocks_df = stocks_df.append(df,ignore_index=True)
 print("Mean close for all stocks is " + str(round(stocks_df.close.mean(),2)))
 print("\n-----------------------------------\n")
-print(stocks_df)
-
 
 #Vi laver nu en graf der viser udviklingen
 for ticker in tickers:
     get_stock=stocks_df.loc[stocks_df['ticker'] == ticker, :]
     get_stock = get_stock[::-1] # Reverses order of dataframe
     get_stock = get_stock.reset_index() # Re-indexes
-    print(get_stock)
     get_stock_timestamp = get_stock['timestamp']
     get_stock_close = get_stock['close']
     plt.plot(get_stock_timestamp,get_stock_close)
