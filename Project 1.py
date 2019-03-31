@@ -28,13 +28,18 @@ for ticker in tickers:
     get_stock=stocks_df.loc[stocks_df['ticker'] == ticker, :]
     get_stock = get_stock[::-1] # Reverses order of dataframe
     get_stock = get_stock.reset_index() # Re-indexes
-    get_stock_timestamp = get_stock['timestamp']
-    get_stock_close = get_stock['close']
-    plt.plot(get_stock_timestamp,get_stock_close)
+    plt.plot(get_stock['timestamp'],get_stock['close'])
     plt.title(ticker)
     # HERUNDER LAVES X-AKSEN
-    #first_day_of_month = stocks_df.loc[get_stock['timestamp'].str[-2:] == "01", :].index.tolist()
-    first_trading_day_of_month = get_stock.loc[get_stock['timestamp'].str[-2:] <= get_stock['timestamp'].str[-2:].shift(periods=1),:].index.tolist()
-    plt.xticks(first_trading_day_of_month)
-    plt.xticks(rotation=90)
-    plt.show()    
+    #SLET IKKE DENNE KOMMENTAR: first_day_of_month = stocks_df.loc[get_stock['timestamp'].str[-2:] == "01", :].index.tolist()
+    if (freq == "DAILY" and outputsize == "compact"):
+        first_trading_day_of_month = get_stock.loc[get_stock['timestamp'].str[-2:] < get_stock['timestamp'].str[-2:].shift(periods=1),:].index.tolist()
+        ticks = first_trading_day_of_month
+        timestamp_values = get_stock["timestamp"].str[:7][ticks]
+    else:
+        first_trading_day_of_year = get_stock.loc[get_stock['timestamp'].str[:4] > get_stock['timestamp'].str[:4].shift(periods=1),:].index.tolist()
+        ticks = first_trading_day_of_year
+        timestamp_values = get_stock["timestamp"].str[:4][ticks]
+    plt.xticks(ticks,timestamp_values)
+    plt.xticks(rotation=75)
+    plt.show()
