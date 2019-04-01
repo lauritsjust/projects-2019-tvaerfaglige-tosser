@@ -10,7 +10,6 @@ def download_data(ticker):
 
 def draw_graph(ticker,days,adjusted):
     import pandas as pd
-    #%matplotlib inline
     import matplotlib.pyplot as plt
     get_stock=stocks_df.loc[stocks_df['ticker'] == ticker, :]
     get_stock=get_stock.iloc[0:days]
