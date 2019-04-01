@@ -1,23 +1,21 @@
-# Import neccesary modules and packages #
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# Function to download data
-apikey = "XU0S88ZM101LB0FQ" 
-outputsize = "full" # Compact or full, if daily data. Compact is 100 days, full is 20+ years.
-freq = "DAILY" # DAILY, WEEKLY OR MONTHLY
-
 def download_data(ticker):
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    apikey = "XU0S88ZM101LB0FQ" 
+    outputsize = "full" # Compact or full, if daily data. Compact is 100 days, full is 20+ years.
+    freq = "DAILY" # DAILY, WEEKLY OR MONTHLY
     fetch_link = "https://www.alphavantage.co/query?function=TIME_SERIES_" + freq + "_ADJUSTED&symbol=" + ticker + "&outputsize=" + outputsize + "&apikey=" + apikey + "&datatype=csv"
     df = pd.read_csv(fetch_link)
     return(df)
 
 def draw_graph(ticker,days,adjusted):
+    import pandas as pd
+    %matplotlib inline
+    import matplotlib.pyplot as plt
     get_stock=stocks_df.loc[stocks_df['ticker'] == ticker, :]
     get_stock=get_stock.iloc[0:days]
     get_stock = get_stock[::-1] # Reverses order of dataframe
     get_stock = get_stock.reset_index() # Re-indexes
-    #plt.figure(figsize=(7,5))
     plt.plot(get_stock['timestamp'], get_stock['adjusted_close'] if adjusted == True else get_stock['close'])
     plt.title(ticker)
     # HERUNDER LAVES X-AKSEN
