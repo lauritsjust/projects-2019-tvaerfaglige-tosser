@@ -8,7 +8,7 @@ def download_data(ticker):
     df = pd.read_csv(fetch_link)
     return(df)
 
-def draw_graph(ticker,days,adjusted):
+def draw_graph(stocks_df,ticker,days,adjusted):
     import pandas as pd
     import matplotlib.pyplot as plt
     get_stock=stocks_df.loc[stocks_df['ticker'] == ticker, :]
