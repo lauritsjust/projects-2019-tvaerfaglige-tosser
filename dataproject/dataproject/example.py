@@ -19,4 +19,4 @@ def fetch_data(tickers):
         print("Mean close for " + ticker +  " is " + str(round(df.close.mean(),2)))
         stocks_df = stocks_df.append(df,ignore_index=True)
         print("Mean close for all stocks is " + str(round(stocks_df.close.mean(),2)))
-        print("\n-----------------------------------\n")
+        return stocks_df
