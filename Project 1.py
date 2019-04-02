@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 # SET ATTRIBUTES FOR DATA FETCH #
 apikey = "XU0S88ZM101LB0FQ" 
 outputsize = "full" # Compact or full, if daily data. Compact is 100 days, full is 20+ years.
-tickers = ["BA","AAPL","AIG"] # Maximum of five stocks per data fetch and only one data fetch per minute allowed
+tickers = ["MSFT","AAPL","AIG"] # Maximum of five stocks per data fetch and only one data fetch per minute allowed
 freq = "DAILY" # DAILY, WEEKLY OR MONTHLY
 adjusted_close = True
 
@@ -24,7 +24,7 @@ for ticker in tickers:
 print("Mean close for all stocks is " + str(round(stocks_df.close.mean(),2)))
 print("\n-----------------------------------\n")
 #Vi laver nu en graf der viser udviklingen
-days = 21
+days = 1000
 for ticker in tickers:
     get_stock=stocks_df.loc[stocks_df['ticker'] == ticker, :]
     get_stock=get_stock.iloc[0:days]
