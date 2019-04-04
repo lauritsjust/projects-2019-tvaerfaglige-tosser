@@ -1,3 +1,7 @@
+#########################################
+# THIS FILE IS NOT USED FOR THE PROJECT #
+#########################################
+
 # EXAMPLE LINK: https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AAPL&outputsize=full&apikey=XU0S88ZM101LB0FQ&datatype=csv
 
 # Import neccesary modules and packages #
